@@ -1,6 +1,6 @@
 /**
- * UC4 : Ability for the Greeting App to save the Greeting Message in the Repository
- * 
+ * UC5 : Ability for the Greeting App to find a Greeting Message by Id in the Repository
+ *
  * @author SAYANI KOLEY
  * @since 08.08.2021
  */
@@ -8,6 +8,7 @@
 package com.bridgelabz.sayani.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,5 +69,16 @@ public class NewGreetingController {
 	@PostMapping(value = "/addGreetingDetails")
 	public ResponseEntity<NewGreeting> addGreeting(@RequestBody NewGreeting greeting) {
 	    return new ResponseEntity<>(greetingService.addGreeting(greeting), HttpStatus.OK);
+	}
+
+	/**
+	 * Purpose : Ability to get greeting message by id
+	 * @param id
+	 * @return
+	 */
+
+	@GetMapping(value = "/getGreetingByID")
+	public ResponseEntity<String> getEmployeeByID(@RequestParam(name = "id") int id) {
+		return new ResponseEntity<>(greetingService.getEmployeeByID(id), HttpStatus.OK);
 	}
 }

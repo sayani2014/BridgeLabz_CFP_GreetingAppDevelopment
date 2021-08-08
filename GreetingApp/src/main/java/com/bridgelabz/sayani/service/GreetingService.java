@@ -2,6 +2,7 @@ package com.bridgelabz.sayani.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.springframework.stereotype.Service;
 
@@ -47,4 +48,20 @@ public class GreetingService {
 	public List<NewGreeting> getGreeting() {
 		return greetingList;
 	}
+
+	/**
+	 * Purpose : Ability to get greeting message by id
+	 * @param id
+	 * @return
+	 */
+	
+    public String getEmployeeByID(int id) {
+		AtomicReference<String> greetings = new AtomicReference<>("");
+		greetingList.stream()
+				.filter(greetingElement -> greetingElement.getId() == id)
+				.forEach(greetingElement -> {
+					greetings.set(greetingElement.getMessage());
+			});
+		return String.valueOf(greetings);
+    }
 }
