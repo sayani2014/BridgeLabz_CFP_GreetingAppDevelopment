@@ -93,4 +93,16 @@ public class GreetingService {
 				.filter(greetingElement -> greetingElement.getId() == id).findFirst()
 				.orElseThrow(() -> new RuntimeException("Unable to find any greeting"));
 	}
+
+	/**
+	 * Purpose : To Delete a Greeting Messages in the Repository.
+	 * @param id
+	 * @return
+	 */
+
+	public String deleteGreeting(int id) {
+		NewGreeting greeting = findEmployeeById(id);
+		greetingList.remove(greeting);
+		return "Greeting deleted successfully";
+	}
 }

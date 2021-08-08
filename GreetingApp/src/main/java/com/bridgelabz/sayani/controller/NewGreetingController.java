@@ -1,5 +1,5 @@
 /**
- * UC7 : Ability for the Greeting App to Edit a Greeting Messages in the Repository.
+ * UC8 : Ability for the Greeting App to delete a Greeting Messages in the Repository.
  *
  * @author SAYANI KOLEY
  * @since 08.08.2021
@@ -94,5 +94,16 @@ public class NewGreetingController {
 	public ResponseEntity<NewGreeting> updateGreeting(@RequestParam(name = "id") int id,
 												   @RequestParam(name = "message") String message) {
 		return new ResponseEntity<>(greetingService.updateGreeting(id, message), HttpStatus.OK);
+	}
+
+	/**
+	 *  Purpose : To Delete a Greeting Messages in the Repository.
+	 * @param id
+	 * @return
+	 */
+
+	@DeleteMapping(value = "/deleteGreeting")
+	public ResponseEntity<String> deleteGreeting(@RequestParam(name = "id") int id) {
+		return new ResponseEntity<>(greetingService.deleteGreeting(id), HttpStatus.OK);
 	}
 }
