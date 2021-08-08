@@ -68,4 +68,29 @@ public class GreetingService {
 			});
 		return String.valueOf(greetings);
     }
+
+	/**
+	 * Purpose : To Edit a Greeting Messages in the Repository.
+	 * @param id
+	 * @param message
+	 * @return
+	 */
+
+	public NewGreeting updateGreeting(int id, String message) {
+		NewGreeting greeting = findEmployeeById(id);
+		greeting.setMessage(message);
+		return greeting;
+	}
+
+	/**
+	 * Purpose : To find the ID in the Greeting Repository.
+	 * @param id
+	 * @return
+	 */
+
+	private NewGreeting findEmployeeById(int id) {
+		return greetingList.stream()
+				.filter(greetingElement -> greetingElement.getId() == id).findFirst()
+				.orElseThrow(() -> new RuntimeException("Unable to find any greeting"));
+	}
 }

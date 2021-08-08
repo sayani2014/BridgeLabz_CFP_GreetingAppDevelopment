@@ -1,5 +1,5 @@
 /**
- * UC6 : Ability for the Greeting App to List all the Greeting Messages in the Repository.
+ * UC7 : Ability for the Greeting App to Edit a Greeting Messages in the Repository.
  *
  * @author SAYANI KOLEY
  * @since 08.08.2021
@@ -13,11 +13,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.bridgelabz.sayani.dto.NewGreeting;
 import com.bridgelabz.sayani.service.GreetingService;
@@ -85,5 +81,18 @@ public class NewGreetingController {
 	@GetMapping(value = "/getGreetingByID")
 	public ResponseEntity<String> getEmployeeByID(@RequestParam(name = "id") int id) {
 		return new ResponseEntity<>(greetingService.getEmployeeByID(id), HttpStatus.OK);
+	}
+
+	/**
+	 * Purpose : To Edit a Greeting Messages in the Repository.
+	 * @param id
+	 * @param message
+	 * @return
+	 */
+
+	@PutMapping(value = "/updateGreeting")
+	public ResponseEntity<NewGreeting> updateGreeting(@RequestParam(name = "id") int id,
+												   @RequestParam(name = "message") String message) {
+		return new ResponseEntity<>(greetingService.updateGreeting(id, message), HttpStatus.OK);
 	}
 }
