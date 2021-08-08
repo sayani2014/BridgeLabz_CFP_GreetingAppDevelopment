@@ -1,5 +1,5 @@
 /**
- * UC5 : Ability for the Greeting App to find a Greeting Message by Id in the Repository
+ * UC6 : Ability for the Greeting App to List all the Greeting Messages in the Repository.
  *
  * @author SAYANI KOLEY
  * @since 08.08.2021
@@ -56,8 +56,7 @@ public class NewGreetingController {
 	}
 
 	/**
-	 * Purpose : Ability to store multiple Greeting Message using POST method
-	 			 and display the messages using GET method
+	 * Purpose : Ability to display the messages using GET method
 	 * @return
 	 */
 
@@ -65,6 +64,12 @@ public class NewGreetingController {
 	public ResponseEntity<List<NewGreeting>> getGreeting() {
 	    return new ResponseEntity<>(greetingService.getGreeting(), HttpStatus.OK);
 	}
+
+    /**
+     * Purpose : Ability to store multiple Greeting Message using POST method
+     * @param greeting
+     * @return
+     */
 
 	@PostMapping(value = "/addGreetingDetails")
 	public ResponseEntity<NewGreeting> addGreeting(@RequestBody NewGreeting greeting) {

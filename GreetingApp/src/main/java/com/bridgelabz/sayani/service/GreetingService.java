@@ -34,8 +34,7 @@ public class GreetingService {
 	}
 
 	/**
-	 * Purpose : Ability to store multiple messages in greeting object
-	 			 and display the list of object to get the messages.
+	 * Purpose : Ability to store multiple messages in greeting object.
 	 * @param greeting
 	 * @return
 	 */
@@ -44,6 +43,11 @@ public class GreetingService {
 		greetingList.add(greeting);
 		return greeting;
 	}
+
+	/**
+	 * Purpose : Ability to display the list of object to get the messages.
+	 * @return
+	 */
 
 	public List<NewGreeting> getGreeting() {
 		return greetingList;
